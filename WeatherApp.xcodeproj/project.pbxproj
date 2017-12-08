@@ -12,6 +12,8 @@
 		7A07FB161FD81C7600696ED1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A07FB141FD81C7600696ED1 /* Main.storyboard */; };
 		7A07FB181FD81C7600696ED1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A07FB171FD81C7600696ED1 /* Assets.xcassets */; };
 		7A07FB1B1FD81C7600696ED1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A07FB191FD81C7600696ED1 /* LaunchScreen.storyboard */; };
+		7A376E981FD9EF15004543A1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A376E971FD9EF15004543A1 /* SearchViewController.swift */; };
+		7A376E9C1FD9EF7A004543A1 /* HourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A376E9B1FD9EF7A004543A1 /* HourViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		7A07FB171FD81C7600696ED1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A07FB1A1FD81C7600696ED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A07FB1C1FD81C7600696ED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A376E971FD9EF15004543A1 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		7A376E9B1FD9EF7A004543A1 /* HourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				7A07FB141FD81C7600696ED1 /* Main.storyboard */,
 				7A07FB171FD81C7600696ED1 /* Assets.xcassets */,
 				7A07FB191FD81C7600696ED1 /* LaunchScreen.storyboard */,
+				7A376E971FD9EF15004543A1 /* SearchViewController.swift */,
+				7A376E9B1FD9EF7A004543A1 /* HourViewController.swift */,
 				7A07FB1C1FD81C7600696ED1 /* Info.plist */,
 			);
 			path = WeatherApp;
@@ -136,8 +142,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A376E9C1FD9EF7A004543A1 /* HourViewController.swift in Sources */,
 				7A07FB131FD81C7600696ED1 /* ViewController.swift in Sources */,
 				7A07FB111FD81C7600696ED1 /* AppDelegate.swift in Sources */,
+				7A376E981FD9EF15004543A1 /* SearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
