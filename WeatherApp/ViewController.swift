@@ -7,20 +7,13 @@
 //
 
 import UIKit
-import MapKit
 import SwiftSky
 
 var myIndex = 0
-var selectedLocation : String = ""
 var latitude = 59.3333
 var longitude = 18.0500
 
-
-
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    let locationManager = CLLocationManager()
-
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, passDataDelegate  {
 
     @IBOutlet weak var dayTableView: UITableView!
     @IBOutlet weak var tempLabel: UILabel!
@@ -28,10 +21,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var weekdayArray = [String]()
     var dateArray = [String]()
+    var weather: Weather!
+    var selectedCity: City!
+    var currentCity: City!
+    var recent = [City]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         SwiftSky.secret = "18f89b0b82ef552ec09ecff33cb281ff"
         
         SwiftSky.hourAmount = .hundredSixtyEight
@@ -45,20 +41,32 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         SwiftSky.units.accumulation = .centimeter
 
         createDayArrays()
-        updateSelectedLocation()
+        
+        self.selectedCity = City()
         
         dayTableView.delegate = self
         dayTableView.dataSource = self
-        
-        locationManager.delegate = self as CLLocationManagerDelegate
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
   
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        updateSelectedLocation()
+        
+        if currentCity == nil {
+            // Display current location
+            currentCity = City()
+            currentCity.cityname = "New York"
+            currentCity.longitude = -74.005973
+            currentCity.latitude = 40.712775
+            
+            selectedCity = currentCity
+        }
+            
+        // New city has been choosen
+        else {
+            currentCity = selectedCity
+        }
+        
+        updateselectedCity()
         updateWeather()
     }
 
@@ -86,12 +94,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "hourSegue" else {return}
-            //API CALL TO GET DAY DATA
+        if segue.identifier == "hourSegue" {
+            //weather.getHourlyData(timestamp)
             let HourViewController = segue.destination as! HourViewController
             HourViewController.weekday = weekdayArray[myIndex]
             HourViewController.weatherData = dateArray[myIndex]
-
+        } else if segue.identifier == "searchSegue" {
+            let SearchViewController = segue.destination as! SearchViewController
+            SearchViewController.delegate = self
+            SearchViewController.city = selectedCity
+        }
     }
     
     func createDayArrays() {
@@ -119,9 +131,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return (weekday!, date!)
     }
     
-    func updateSelectedLocation() {
-        if selectedLocation != "" {
-            self.title = selectedLocation
+    func updateselectedCity() {
+        if selectedCity != nil {
+            self.title = selectedCity.cityname
         } else {
             // Set selected location to most recent location
             self.title = "No location selected"
@@ -130,34 +142,45 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func updateWeather() {
      
-        // IF NOT SAME DATA
-        print("Getting weather for" + selectedLocation)
+        print("Getting weather for " + selectedCity.cityname)
         
 //        SwiftSky.get([.current, .minutes, .hours, .days, .alerts],
-//                     at: Location(latitude: latitude, longitude: longitude)
+//                     at: Location(latitude: selectedCity.latitude, longitude: selectedCity.longitude)
 //        ) { result in
 //            switch result {
 //            case .success(let forecast):
-//                self.setCurrentWeather(current: forecast.current!)
+//                self.weather = Weather()
+//                self.weather.current = forecast.current
+//                self.setCurrentWeather()
+//
 //            case .failure(let error):
 //                print(error)
 //            }
 //        }
         
-       
+        setCurrentWeather()
+
     }
     
-    func setCurrentWeather(current: DataPoint) {
-        let currentTemperature = (current.temperature!.current?.value)
-        let currentIcon = (current.icon)
+    func setCurrentWeather() {
+//        let currentTemperature = weather.getCurrentTemperature()
+//        let currentIcon = (current.icon)
         
-        tempLabel.text = "\(currentTemperature!)"
-        iconLabel.text = currentIcon
+        let currentTemperature = 6.4
+
+        tempLabel.text = "\(currentTemperature)"
+//        iconLabel.text = currentIcon
     }
     
     func getDailyWeather(temp: Double, icon: String) {
         
     }
+
+    
+    func passDataDelegate(obj: City) {
+        self.selectedCity = obj
+    }
+    
 }
 
 
@@ -175,20 +198,4 @@ extension Date {
     }
 }
 
-extension ViewController : CLLocationManagerDelegate {
-    private func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            locationManager.requestLocation()
-        }
-    }
-    
-    private func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if locations.first != nil {
-            print("location:: (location)")
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("error:: (error)")
-    }
-}
+

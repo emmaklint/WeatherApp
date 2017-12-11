@@ -14,6 +14,9 @@
 		7A07FB1B1FD81C7600696ED1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A07FB191FD81C7600696ED1 /* LaunchScreen.storyboard */; };
 		7A376E981FD9EF15004543A1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A376E971FD9EF15004543A1 /* SearchViewController.swift */; };
 		7A376E9C1FD9EF7A004543A1 /* HourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A376E9B1FD9EF7A004543A1 /* HourViewController.swift */; };
+		7A694E781FDEA3E20030BF0C /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694E771FDEA3E10030BF0C /* Weather.swift */; };
+		7A694E7C1FDEC3510030BF0C /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694E7B1FDEC3510030BF0C /* Protocol.swift */; };
+		7A694E7E1FDEDA5C0030BF0C /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694E7D1FDEDA5C0030BF0C /* City.swift */; };
 		862A7BD19954B29C2814F60B /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 226FB3D25A42E3BA0502BC66 /* Pods_WeatherApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +31,9 @@
 		7A07FB1C1FD81C7600696ED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A376E971FD9EF15004543A1 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		7A376E9B1FD9EF7A004543A1 /* HourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourViewController.swift; sourceTree = "<group>"; };
+		7A694E771FDEA3E10030BF0C /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		7A694E7B1FDEC3510030BF0C /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		7A694E7D1FDEDA5C0030BF0C /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		A6F4055EDEDDB07CB7E5FC8F /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
 		D28D73957BCA90867E0040A8 /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -47,6 +53,8 @@
 		7A07FB041FD81C7600696ED1 = {
 			isa = PBXGroup;
 			children = (
+				7A694E7B1FDEC3510030BF0C /* Protocol.swift */,
+				7A694E761FDEA39A0030BF0C /* Model */,
 				7A07FB0F1FD81C7600696ED1 /* WeatherApp */,
 				7A07FB0E1FD81C7600696ED1 /* Products */,
 				A16C89F1D25A1C07436DF0CD /* Pods */,
@@ -75,6 +83,15 @@
 				7A07FB1C1FD81C7600696ED1 /* Info.plist */,
 			);
 			path = WeatherApp;
+			sourceTree = "<group>";
+		};
+		7A694E761FDEA39A0030BF0C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7A694E7D1FDEDA5C0030BF0C /* City.swift */,
+				7A694E771FDEA3E10030BF0C /* Weather.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		87BA6F81655DB1DE416DED2F /* Frameworks */ = {
@@ -228,7 +245,10 @@
 				7A376E9C1FD9EF7A004543A1 /* HourViewController.swift in Sources */,
 				7A07FB131FD81C7600696ED1 /* ViewController.swift in Sources */,
 				7A07FB111FD81C7600696ED1 /* AppDelegate.swift in Sources */,
+				7A694E7C1FDEC3510030BF0C /* Protocol.swift in Sources */,
 				7A376E981FD9EF15004543A1 /* SearchViewController.swift in Sources */,
+				7A694E7E1FDEDA5C0030BF0C /* City.swift in Sources */,
+				7A694E781FDEA3E20030BF0C /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

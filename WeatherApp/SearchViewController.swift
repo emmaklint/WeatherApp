@@ -11,16 +11,16 @@ import MapKit
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+  
     
-
-
     @IBOutlet weak var searchResultTableView: UITableView!
     var searchResultArray = ["Stockholm", "Göteborg", "Norrköping"]
+    
+    var delegate: passDataDelegate?
+    var city: City!
+
  
     @IBOutlet weak var searchField: UITextField!
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +47,20 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        city.cityname = "Stockholm"
+        city.longitude = 18.0500
+        city.latitude = 59.3333
+        
+        delegate?.passDataDelegate(obj: city!)
+
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func test(_ sender: UIButton) {
         let query = searchField.text
+    
         print(query!)
     
 
@@ -62,13 +70,4 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func searchLocation() {
         
     }
-
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-////        guard segue.identifier == "hourSegue" else {return}
-//        let ViewController = segue.destination as! ViewController
-//        ViewController.selectedLocation = selectedLocation
-//    }
 }
-
-
