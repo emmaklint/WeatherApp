@@ -8,17 +8,22 @@
 
 import UIKit
 
-class HourViewController: UIViewController {
+class HourViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+    @IBOutlet weak var hourTableView: UITableView!
+    var hourArray = [String]()
+
     
-    @IBOutlet weak var testLabel: UILabel!
-    var day : String = ""
+    var weekday : String = ""
+    var weatherData : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        testLabel.text = day
-        self.title = day
+        self.title = weekday
+        createHourArray()
 
-        // Do any additional setup after loading the view.
+        hourTableView.delegate = self
+        hourTableView.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,15 +31,49 @@ class HourViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return hourArray.count
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = hourTableView.dequeueReusableCell(withIdentifier: "hourCell")
+        cell?.textLabel?.text = hourArray[indexPath.row]
+        return cell!
+    }
+    
+    func createHourArray() {
+        // Number of hours from API
+        let numOfHours = getNumberOfHours(weekday: weekday)
+        var index = 0
+        while index < numOfHours {
+            hourArray.append(createHour(index: index).hourOfDay()!)
+            index = index + 1
+        }
+    }
+    
+    func createHour(index: Int) -> (Date) {
+        let calendar = Calendar.current
+        print(calendar)
+        let hour = calendar.date(byAdding: .hour, value: index, to: Date())
 
+        return (hour!)
+    }
+    
+    func getNumberOfHours(weekday: String) -> (Int) {
+        if (weekday == "Today") {
+            print(weekday)
+        } else {
+            return 24
+        }
+        return 1
+    }
 }
+
+extension Date {
+    func hourOfDay() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH"
+        return dateFormatter.string(from: self).capitalized
+    }
+}
+
