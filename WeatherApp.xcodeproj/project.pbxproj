@@ -17,6 +17,16 @@
 		7A694E781FDEA3E20030BF0C /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694E771FDEA3E10030BF0C /* Weather.swift */; };
 		7A694E7C1FDEC3510030BF0C /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694E7B1FDEC3510030BF0C /* Protocol.swift */; };
 		7A694E7E1FDEDA5C0030BF0C /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694E7D1FDEDA5C0030BF0C /* City.swift */; };
+		7A694E821FDFC4650030BF0C /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694E811FDFC4650030BF0C /* CustomTableViewCell.swift */; };
+		7A694E841FDFC4FD0030BF0C /* DayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694E831FDFC4FD0030BF0C /* DayTableViewCell.swift */; };
+		7A86A8D91FE0285E002594A1 /* WorkSans-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A86A8D51FE02848002594A1 /* WorkSans-Black.ttf */; };
+		7A86A8DA1FE02865002594A1 /* WorkSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A86A8D31FE02847002594A1 /* WorkSans-ExtraBold.ttf */; };
+		7A86A8DB1FE02865002594A1 /* WorkSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A86A8D81FE02848002594A1 /* WorkSans-ExtraLight.ttf */; };
+		7A86A8DC1FE02865002594A1 /* WorkSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A86A8D71FE02848002594A1 /* WorkSans-Light.ttf */; };
+		7A86A8DD1FE02865002594A1 /* WorkSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A86A8D11FE02847002594A1 /* WorkSans-Medium.ttf */; };
+		7A86A8DE1FE02865002594A1 /* WorkSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A86A8D21FE02847002594A1 /* WorkSans-Regular.ttf */; };
+		7A86A8DF1FE02865002594A1 /* WorkSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A86A8D61FE02848002594A1 /* WorkSans-SemiBold.ttf */; };
+		7A86A8E01FE02865002594A1 /* WorkSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A86A8D01FE02847002594A1 /* WorkSans-Thin.ttf */; };
 		862A7BD19954B29C2814F60B /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 226FB3D25A42E3BA0502BC66 /* Pods_WeatherApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +44,17 @@
 		7A694E771FDEA3E10030BF0C /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		7A694E7B1FDEC3510030BF0C /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		7A694E7D1FDEDA5C0030BF0C /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		7A694E811FDFC4650030BF0C /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		7A694E831FDFC4FD0030BF0C /* DayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTableViewCell.swift; sourceTree = "<group>"; };
+		7A86A8D01FE02847002594A1 /* WorkSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Thin.ttf"; sourceTree = "<group>"; };
+		7A86A8D11FE02847002594A1 /* WorkSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Medium.ttf"; sourceTree = "<group>"; };
+		7A86A8D21FE02847002594A1 /* WorkSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Regular.ttf"; sourceTree = "<group>"; };
+		7A86A8D31FE02847002594A1 /* WorkSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		7A86A8D41FE02847002594A1 /* WorkSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Bold.ttf"; sourceTree = "<group>"; };
+		7A86A8D51FE02848002594A1 /* WorkSans-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Black.ttf"; sourceTree = "<group>"; };
+		7A86A8D61FE02848002594A1 /* WorkSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		7A86A8D71FE02848002594A1 /* WorkSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Light.ttf"; sourceTree = "<group>"; };
+		7A86A8D81FE02848002594A1 /* WorkSans-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-ExtraLight.ttf"; sourceTree = "<group>"; };
 		A6F4055EDEDDB07CB7E5FC8F /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
 		D28D73957BCA90867E0040A8 /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -53,6 +74,8 @@
 		7A07FB041FD81C7600696ED1 = {
 			isa = PBXGroup;
 			children = (
+				7A694E831FDFC4FD0030BF0C /* DayTableViewCell.swift */,
+				7A694E811FDFC4650030BF0C /* CustomTableViewCell.swift */,
 				7A694E7B1FDEC3510030BF0C /* Protocol.swift */,
 				7A694E761FDEA39A0030BF0C /* Model */,
 				7A07FB0F1FD81C7600696ED1 /* WeatherApp */,
@@ -81,6 +104,15 @@
 				7A376E971FD9EF15004543A1 /* SearchViewController.swift */,
 				7A376E9B1FD9EF7A004543A1 /* HourViewController.swift */,
 				7A07FB1C1FD81C7600696ED1 /* Info.plist */,
+				7A86A8D51FE02848002594A1 /* WorkSans-Black.ttf */,
+				7A86A8D41FE02847002594A1 /* WorkSans-Bold.ttf */,
+				7A86A8D31FE02847002594A1 /* WorkSans-ExtraBold.ttf */,
+				7A86A8D81FE02848002594A1 /* WorkSans-ExtraLight.ttf */,
+				7A86A8D71FE02848002594A1 /* WorkSans-Light.ttf */,
+				7A86A8D11FE02847002594A1 /* WorkSans-Medium.ttf */,
+				7A86A8D21FE02847002594A1 /* WorkSans-Regular.ttf */,
+				7A86A8D61FE02848002594A1 /* WorkSans-SemiBold.ttf */,
+				7A86A8D01FE02847002594A1 /* WorkSans-Thin.ttf */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -173,6 +205,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A86A8DA1FE02865002594A1 /* WorkSans-ExtraBold.ttf in Resources */,
+				7A86A8DB1FE02865002594A1 /* WorkSans-ExtraLight.ttf in Resources */,
+				7A86A8DC1FE02865002594A1 /* WorkSans-Light.ttf in Resources */,
+				7A86A8DD1FE02865002594A1 /* WorkSans-Medium.ttf in Resources */,
+				7A86A8DE1FE02865002594A1 /* WorkSans-Regular.ttf in Resources */,
+				7A86A8DF1FE02865002594A1 /* WorkSans-SemiBold.ttf in Resources */,
+				7A86A8E01FE02865002594A1 /* WorkSans-Thin.ttf in Resources */,
+				7A86A8D91FE0285E002594A1 /* WorkSans-Black.ttf in Resources */,
 				7A07FB1B1FD81C7600696ED1 /* LaunchScreen.storyboard in Resources */,
 				7A07FB181FD81C7600696ED1 /* Assets.xcassets in Resources */,
 				7A07FB161FD81C7600696ED1 /* Main.storyboard in Resources */,
@@ -243,7 +283,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A376E9C1FD9EF7A004543A1 /* HourViewController.swift in Sources */,
+				7A694E841FDFC4FD0030BF0C /* DayTableViewCell.swift in Sources */,
 				7A07FB131FD81C7600696ED1 /* ViewController.swift in Sources */,
+				7A694E821FDFC4650030BF0C /* CustomTableViewCell.swift in Sources */,
 				7A07FB111FD81C7600696ED1 /* AppDelegate.swift in Sources */,
 				7A694E7C1FDEC3510030BF0C /* Protocol.swift in Sources */,
 				7A376E981FD9EF15004543A1 /* SearchViewController.swift in Sources */,

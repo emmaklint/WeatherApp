@@ -21,6 +21,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var weekdayArray = [String]()
     var dateArray = [String]()
+    var tempArray : [Int] = [3, 5, 10, 14, 7, 9, 5]
+    var apparentTempArray : [Int] = [2, 7, 9, 12, 9, 10, 4]
+    var rainArray: [Double] = [0.0, 1.4, 0.3, 0.0, 5.0, 10.7, 0.0]
     var weather: Weather!
     var selectedCity: City!
     var currentCity: City!
@@ -46,7 +49,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         dayTableView.delegate = self
         dayTableView.dataSource = self
-  
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -82,10 +85,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = dayTableView.dequeueReusableCell(withIdentifier: "dayCell")
-        cell?.textLabel?.text = weekdayArray[indexPath.row]
-        cell?.detailTextLabel?.text = dateArray[indexPath.row]
-        return cell!
+        let cell = dayTableView.dequeueReusableCell(withIdentifier: "dayCell") as! CustomTableViewCell
+        cell.weekdayLabel.text = weekdayArray[indexPath.row]
+        cell.dateLabel.text = dateArray[indexPath.row]
+        cell.tempLabel.text = "\(tempArray[indexPath.row])° (\(apparentTempArray[indexPath.row])°)"
+        cell.rainLabel.text = "\(rainArray[indexPath.row]) mm"
+  
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -172,7 +182,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //        iconLabel.text = currentIcon
     }
     
-    func getDailyWeather(temp: Double, icon: String) {
+    func setDailyWeather() {
         
     }
 
@@ -180,6 +190,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func passDataDelegate(obj: City) {
         self.selectedCity = obj
     }
+    
+    
     
 }
 
@@ -197,5 +209,7 @@ extension Date {
         return dateFormatter.string(from: self).capitalized
     }
 }
+
+
 
 

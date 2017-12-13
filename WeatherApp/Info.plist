@@ -2,6 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>WorkSand-Black.ttf</string>
+		<string>WorkSand-Bold.ttf</string>
+		<string>WorkSand-ExtraBold.ttf</string>
+		<string>WorkSand-ExtraLight.ttf</string>
+		<string>WorkSand-Light.ttf</string>
+		<string>WorkSand-Medium.ttf</string>
+		<string>WorkSand-Regular.ttf</string>
+		<string>WorkSand-SemiBold.ttf</string>
+		<string>WorkSand-Thin.ttf</string>
+	</array>
 	<key>LSApplicationCategoryType</key>
 	<string>App needs location</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
