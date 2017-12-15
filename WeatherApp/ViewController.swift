@@ -16,8 +16,9 @@ var longitude = 18.0500
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, passDataDelegate  {
 
     @IBOutlet weak var dayTableView: UITableView!
-    @IBOutlet weak var tempLabel: UILabel!
-    @IBOutlet weak var iconLabel: UILabel!
+    @IBOutlet weak var currentIcon: UIImageView!
+    @IBOutlet weak var currentTemp: UILabel!
+    @IBOutlet weak var currentApparentTemp: UILabel!
     
     var weekdayArray = [String]()
     var dateArray = [String]()
@@ -123,9 +124,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let result = createDay(index: index)
             if index == 0 {
                 weekdayArray.append("Today")
-            } else if index == 1 {
-                weekdayArray.append("Tomorrow")
-            } else {
+            }
+//            else if index == 1 {
+//                weekdayArray.append("Tomorrow")
+//            }
+            else {
                 weekdayArray.append(result.weekday)
             }
             dateArray.append(result.date.dateFormatted())
@@ -176,9 +179,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //        let currentTemperature = weather.getCurrentTemperature()
 //        let currentIcon = (current.icon)
         
-        let currentTemperature = 6.4
+        let currentTemperatureVal = 6.4
 
-        tempLabel.text = "\(currentTemperature)"
+        currentTemp.text = "\(currentTemperatureVal)°"
 //        iconLabel.text = currentIcon
     }
     
@@ -205,7 +208,7 @@ extension Date {
     
     func dateFormatted() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d MMMM"
+        dateFormatter.dateFormat = "d MMM"
         return dateFormatter.string(from: self).capitalized
     }
 }

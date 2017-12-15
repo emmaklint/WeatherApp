@@ -16,10 +16,12 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var rainLabel: UILabel!
+    @IBOutlet weak var lineImg: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.layoutMargins = UIEdgeInsets.zero;
+        self.preservesSuperviewLayoutMargins = false;
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

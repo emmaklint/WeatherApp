@@ -18,7 +18,6 @@
 		7A694E7C1FDEC3510030BF0C /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694E7B1FDEC3510030BF0C /* Protocol.swift */; };
 		7A694E7E1FDEDA5C0030BF0C /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694E7D1FDEDA5C0030BF0C /* City.swift */; };
 		7A694E821FDFC4650030BF0C /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694E811FDFC4650030BF0C /* CustomTableViewCell.swift */; };
-		7A694E841FDFC4FD0030BF0C /* DayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694E831FDFC4FD0030BF0C /* DayTableViewCell.swift */; };
 		7A86A8D91FE0285E002594A1 /* WorkSans-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A86A8D51FE02848002594A1 /* WorkSans-Black.ttf */; };
 		7A86A8DA1FE02865002594A1 /* WorkSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A86A8D31FE02847002594A1 /* WorkSans-ExtraBold.ttf */; };
 		7A86A8DB1FE02865002594A1 /* WorkSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A86A8D81FE02848002594A1 /* WorkSans-ExtraLight.ttf */; };
@@ -45,7 +44,6 @@
 		7A694E7B1FDEC3510030BF0C /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		7A694E7D1FDEDA5C0030BF0C /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		7A694E811FDFC4650030BF0C /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		7A694E831FDFC4FD0030BF0C /* DayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTableViewCell.swift; sourceTree = "<group>"; };
 		7A86A8D01FE02847002594A1 /* WorkSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Thin.ttf"; sourceTree = "<group>"; };
 		7A86A8D11FE02847002594A1 /* WorkSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Medium.ttf"; sourceTree = "<group>"; };
 		7A86A8D21FE02847002594A1 /* WorkSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Regular.ttf"; sourceTree = "<group>"; };
@@ -74,7 +72,6 @@
 		7A07FB041FD81C7600696ED1 = {
 			isa = PBXGroup;
 			children = (
-				7A694E831FDFC4FD0030BF0C /* DayTableViewCell.swift */,
 				7A694E811FDFC4650030BF0C /* CustomTableViewCell.swift */,
 				7A694E7B1FDEC3510030BF0C /* Protocol.swift */,
 				7A694E761FDEA39A0030BF0C /* Model */,
@@ -283,7 +280,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A376E9C1FD9EF7A004543A1 /* HourViewController.swift in Sources */,
-				7A694E841FDFC4FD0030BF0C /* DayTableViewCell.swift in Sources */,
 				7A07FB131FD81C7600696ED1 /* ViewController.swift in Sources */,
 				7A694E821FDFC4650030BF0C /* CustomTableViewCell.swift in Sources */,
 				7A07FB111FD81C7600696ED1 /* AppDelegate.swift in Sources */,
