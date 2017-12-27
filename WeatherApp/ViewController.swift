@@ -8,16 +8,19 @@
 
 import UIKit
 import SwiftSky
+import Foundation
 
 var myIndex = 0
-var latitude = 59.3333
-var longitude = 18.0500
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, passDataDelegate  {
 
     @IBOutlet weak var dayTableView: UITableView!
-    @IBOutlet weak var currentIcon: UIImageView!
-    @IBOutlet weak var currentTemp: UILabel!
+    
+    @IBOutlet weak var currentIconImageView: UIImageView!
+    @IBOutlet weak var currentTempLabel: UILabel!
+    @IBOutlet weak var currentRainLabel: UILabel!
+    @IBOutlet weak var currentWindLabel: UILabel!
+    @IBOutlet weak var currentSummaryLabel: UILabel!
     
     var weekdayArray = [String]()
     var dateArray = [String]()
@@ -27,6 +30,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var selectedCity: City!
     var currentCity: City!
     var recent = [City]()
+    
+    var weeklyTempArray : [Int] = []
+    var weeklyIconArray : [String] = []
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,15 +50,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         SwiftSky.units.pressure = .millibar
         SwiftSky.units.precipitation = .millimeter
         SwiftSky.units.accumulation = .centimeter
-
-        createDayArrays()
-        createGradientBackground()
-
         
         self.selectedCity = City()
         
         dayTableView.delegate = self
         dayTableView.dataSource = self
+        
+        updateSelectedCity()
+        createDayArrays()
+        createGradientBackground()
+        updateWeather()
+
     }
     
     func createGradientBackground() {
@@ -75,9 +84,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if currentCity == nil {
             // Display current location
             currentCity = City()
-            currentCity.cityname = "New York"
-            currentCity.longitude = -74.005973
-            currentCity.latitude = 40.712775
+            currentCity.cityname = "Stockholm"
+            currentCity.longitude = 17.9667
+            currentCity.latitude = 59.3000
             
             selectedCity = currentCity
         }
@@ -87,8 +96,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             currentCity = selectedCity
         }
         
-        updateselectedCity()
+        updateSelectedCity()
         updateWeather()
+    }
+    
+    func updateSelectedCity() {
+        if selectedCity == nil {
+            // Set selected city to most recent
+            currentCity = City()
+            currentCity.cityname = "Stockholm"
+            currentCity.longitude = 17.9667
+            currentCity.latitude = 59.3000
+            selectedCity = currentCity
+        }
+        
+        print("selectedCity set to \(selectedCity.cityname)")
+        
+        self.title = selectedCity.cityname
     }
 
     override func didReceiveMemoryWarning() {
@@ -106,6 +130,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = dayTableView.dequeueReusableCell(withIdentifier: "dayCell") as! CustomTableViewCell
         cell.weekdayLabel.text = weekdayArray[indexPath.row]
+        print("temp: \(weeklyTempArray.count)")
+        print(weekdayArray.count)
+        if weekdayArray.count == weeklyTempArray.count {
+            cell.tempLabel.text = "\(weeklyTempArray[indexPath.row])"
+        }
+        if weekdayArray.count == weeklyIconArray.count {
+            if weeklyIconArray[indexPath.row] == "clear-day" {
+                cell.iconLabel.text = "Sunny"
+            } else if weeklyIconArray[indexPath.row] == "clear-night" {
+                cell.iconLabel.text = "Clear"
+            } else if weeklyIconArray[indexPath.row] == "partly-cloudy-day" {
+                cell.iconLabel.text = "Partly cloudy"
+            } else if weeklyIconArray[indexPath.row] == "partly-cloudy-night" {
+                cell.iconLabel.text = "Partly cloudy"
+            } else {
+                cell.iconLabel.text = "\(weeklyIconArray[indexPath.row].capitalized)"
+            }
+            
+        }
         return cell
     }
     
@@ -138,7 +181,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func createDayArrays() {
         var index = 0
         
-        while index < 7 {
+        while index < 8 {
             let result = createDay(index: index)
             if index == 0 {
                 weekdayArray.append("Today")
@@ -162,60 +205,77 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return (weekday!, date!)
     }
     
-    func updateselectedCity() {
-        if selectedCity != nil {
-            self.title = selectedCity.cityname
-        } else {
-//             Set selected location to most recent location
-            self.title = "No location selected"
-        }
-    }
+    
     
     func updateWeather() {
      
         print("Getting weather for " + selectedCity.cityname)
         
-//        SwiftSky.get([.current, .minutes, .hours, .days, .alerts],
-//                     at: Location(latitude: selectedCity.latitude, longitude: selectedCity.longitude)
-//        ) { result in
-//            switch result {
-//            case .success(let forecast):
-//                self.weather = Weather()
-//                self.weather.current = forecast.current
-//                self.setCurrentWeather()
-//
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
+        SwiftSky.get([.current, .minutes, .hours, .days, .alerts],
+                     at: Location(latitude: selectedCity.latitude, longitude: selectedCity.longitude)
+        ) { result in
+            switch result {
+            case .success(let forecast):
+                self.weather = Weather()
+                self.weather.current = forecast.current
+                self.weeklyTempArray.removeAll()
+                self.weeklyIconArray.removeAll()
+                
+                self.setCurrentWeather()
+                self.setDailyWeather(days: (forecast.days?.points)!)
+
+            case .failure(let error):
+                print(error)
+            }
+        }
         
-        setCurrentWeather()
+//        setCurrentWeather()
 
     }
     
     func setCurrentWeather() {
-//        let currentTemperature = weather.getCurrentTemperature()
-//        let currentIcon = (current.icon)
-        
-        let currentTemperatureVal = 25
+        let currentIcon = weather.getCurrentIcon()
+        let currentTemperature = weather.getCurrentTemperature()
+        let currentRain = weather.getCurrentRain()
+        let currentWind = weather.getCurrentWind()
+        let currentSummary = weather.getCurrentSummary()
 
-        currentTemp.text = "\(currentTemperatureVal)°"
-//        iconLabel.text = currentIcon
+//        let currentIcon = "clear-day"
+//        let currentTemperature = 25
+//        let currentRain = 3
+//        let currentWind = 5
+//        let currentSummary = "Rain starting in the afternoon, continuing until evening."
+        
+        currentIconImageView.image = UIImage(named: currentIcon)
+        currentTempLabel.text = "\(currentTemperature)°"
+        currentRainLabel.text = "\(currentRain) mm"
+        currentWindLabel.text = "\(currentWind) m/s"
+        currentSummaryLabel.text = currentSummary
+        
+        self.dayTableView.reloadData()
     }
     
-    func setDailyWeather() {
+    func setDailyWeather(days: [DataPoint]) {
+        for (_, item) in (days.enumerated()) {
+            let temp = (item.temperature?.max?.value)!
+            let roundTemp = Int(temp)
+            self.weeklyTempArray.append(roundTemp)
+            
+            let icon = (item.icon)!
+            self.weeklyIconArray.append(icon)
+            
+        }
+        
         
     }
+    
+
 
     
     func passDataDelegate(obj: City) {
         self.selectedCity = obj
     }
-    
-    
-    
 }
-
 
 extension Date {
     func dayOfWeek() -> String? {

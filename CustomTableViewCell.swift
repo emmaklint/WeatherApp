@@ -11,12 +11,10 @@ import UIKit
 class CustomTableViewCell: UITableViewCell {
 
     @IBOutlet weak var dayView: UIView!
-    @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var weekdayLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
-    @IBOutlet weak var rainLabel: UILabel!
     @IBOutlet weak var lineImg: UIImageView!
+    @IBOutlet weak var iconLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

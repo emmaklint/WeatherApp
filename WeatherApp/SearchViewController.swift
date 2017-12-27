@@ -48,9 +48,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        city.cityname = "Stockholm"
-        city.longitude = 18.0500
-        city.latitude = 59.3333
+        city.cityname = "Sydney"
+        city.longitude = 151.209296
+        city.latitude = -33.868820
         
         delegate?.passDataDelegate(obj: city!)
 
