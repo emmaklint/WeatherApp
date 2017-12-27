@@ -18,13 +18,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var dayTableView: UITableView!
     @IBOutlet weak var currentIcon: UIImageView!
     @IBOutlet weak var currentTemp: UILabel!
-    @IBOutlet weak var currentApparentTemp: UILabel!
     
     var weekdayArray = [String]()
     var dateArray = [String]()
     var tempArray : [Int] = [3, 5, 10, 14, 7, 9, 5]
-    var apparentTempArray : [Int] = [2, 7, 9, 12, 9, 10, 4]
-    var rainArray: [Double] = [0.0, 1.4, 0.3, 0.0, 5.0, 10.7, 0.0]
+    var dayArray = [Days]()
     var weather: Weather!
     var selectedCity: City!
     var currentCity: City!
@@ -32,6 +30,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         SwiftSky.secret = "18f89b0b82ef552ec09ecff33cb281ff"
         
         SwiftSky.hourAmount = .hundredSixtyEight
@@ -45,12 +45,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         SwiftSky.units.accumulation = .centimeter
 
         createDayArrays()
+        createGradientBackground()
+
         
         self.selectedCity = City()
         
         dayTableView.delegate = self
         dayTableView.dataSource = self
+    }
+    
+    func createGradientBackground() {
+        let topColor = UIColor(red: (56/255.0), green: (138/225.0), blue: (234/255.0), alpha: 1)
+        let bottomColor = UIColor(red: (105/255.0), green: (190/225.0), blue: (246/255.0), alpha: 1)
         
+        
+        let gradientColors: [CGColor] = [topColor.cgColor, bottomColor.cgColor]
+        let gradientLocation: [NSNumber] = [0.0, 1.0]
+        
+        let gradientLayer : CAGradientLayer = CAGradientLayer()
+        gradientLayer.colors = gradientColors
+        gradientLayer.locations = gradientLocation
+        
+        gradientLayer.frame = self.view.bounds
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -85,31 +102,32 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return weekdayArray.count
     }
     
+    // Set cell content
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = dayTableView.dequeueReusableCell(withIdentifier: "dayCell") as! CustomTableViewCell
         cell.weekdayLabel.text = weekdayArray[indexPath.row]
-        cell.dateLabel.text = dateArray[indexPath.row]
-        cell.tempLabel.text = "\(tempArray[indexPath.row])° (\(apparentTempArray[indexPath.row])°)"
-        cell.rainLabel.text = "\(rainArray[indexPath.row]) mm"
-  
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        return 60
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        myIndex = indexPath.row
-        performSegue(withIdentifier: "hourSegue", sender: self)
-    }
+    // Click on cell
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        myIndex = indexPath.row
+//        performSegue(withIdentifier: "hourSegue", sender: self)
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "hourSegue" {
             //weather.getHourlyData(timestamp)
             let HourViewController = segue.destination as! HourViewController
             HourViewController.weekday = weekdayArray[myIndex]
-            HourViewController.weatherData = dateArray[myIndex]
+            HourViewController.date = dateArray[myIndex]
+            HourViewController.location = selectedCity.cityname
+            //Send day object
+//            HourViewController.weatherData = dayArray[myIndex]
         } else if segue.identifier == "searchSegue" {
             let SearchViewController = segue.destination as! SearchViewController
             SearchViewController.delegate = self
@@ -148,7 +166,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if selectedCity != nil {
             self.title = selectedCity.cityname
         } else {
-            // Set selected location to most recent location
+//             Set selected location to most recent location
             self.title = "No location selected"
         }
     }
@@ -179,7 +197,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //        let currentTemperature = weather.getCurrentTemperature()
 //        let currentIcon = (current.icon)
         
-        let currentTemperatureVal = 6.4
+        let currentTemperatureVal = 25
 
         currentTemp.text = "\(currentTemperatureVal)°"
 //        iconLabel.text = currentIcon
