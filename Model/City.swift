@@ -9,7 +9,7 @@
 import Foundation
 
 class City {
-    private var _cityname = "";
+    var _cityname: String = "London"
     private var _longitude: Double = 0
     private var _latitude: Double = 0
     private var _recent = [String]()

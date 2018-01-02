@@ -13,6 +13,7 @@ import Foundation
 var myIndex = 0
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, passDataDelegate  {
+  
 
     @IBOutlet weak var dayTableView: UITableView!
     
@@ -110,8 +111,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             selectedCity = currentCity
         }
         
-        print("selectedCity set to \(selectedCity.cityname)")
-        
         self.title = selectedCity.cityname
     }
 
@@ -130,8 +129,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = dayTableView.dequeueReusableCell(withIdentifier: "dayCell") as! CustomTableViewCell
         cell.weekdayLabel.text = weekdayArray[indexPath.row]
-        print("temp: \(weeklyTempArray.count)")
-        print(weekdayArray.count)
         if weekdayArray.count == weeklyTempArray.count {
             cell.tempLabel.text = "\(weeklyTempArray[indexPath.row])"
         }
@@ -174,7 +171,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         } else if segue.identifier == "searchSegue" {
             let SearchViewController = segue.destination as! SearchViewController
             SearchViewController.delegate = self
-            SearchViewController.city = selectedCity
+//            SearchViewController.city = selectedCity
         }
     }
     
@@ -272,8 +269,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 
     
-    func passDataDelegate(obj: City) {
-        self.selectedCity = obj
+    func passDataDelegate(name: String, long: Double, lat: Double) {
+        self.selectedCity.cityname = name
+        self.selectedCity.longitude = long
+        self.selectedCity.latitude = lat
     }
 }
 

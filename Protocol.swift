@@ -9,5 +9,5 @@
 import Foundation
 
 protocol passDataDelegate {
-    func passDataDelegate(obj: City)
+    func passDataDelegate(name: String, long: Double, lat: Double)
 }
